@@ -33,6 +33,18 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   padding: 0 20px;
 }
 
+/* wide container for banners, top bar and header — content sits closer to the edges like the original */
+.topbar .container,
+.header .container,
+.hero .container,
+.trending .container,
+.discount .container,
+.keepfit .container {
+  max-width: 1760px;
+  padding: 0 40px;
+  width: 100%; /* the banner sections are flex containers: without this the .container shrinks to fit and drifts to the center */
+}
+
 .accent { color: var(--red); }
 .accent-dark { color: var(--dark); }
 
@@ -142,12 +154,13 @@ h1, h2, h3, h4, .btn {
 .header__inner {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 25px;
+  justify-content: flex-start;
+  gap: 55px;
 }
 
+.header__socials { margin-left: auto; }
+
 .logo__img { height: 46px; width: auto; }
-.logo__img--footer { filter: brightness(0) invert(1); }
 
 .nav__list {
   display: flex;
@@ -170,6 +183,14 @@ h1, h2, h3, h4, .btn {
 .socials a:hover { color: var(--dark); }
 .socials svg { width: 100%; height: 100%; }
 .socials--boxed a { color: var(--red); }
+
+/* the original icon SVGs rely on site CSS: hide the solid "cut-out" layer
+   and paint the frame + glyph with the current text color */
+.socials svg .outer_2mW { display: none; }
+.socials svg path { fill: currentColor; }
+
+.about .socials a { color: #fff; }
+.about .socials a:hover { color: var(--red); }
 
 .burger { display: none; flex-direction: column; gap: 5px; }
 .burger span { width: 26px; height: 3px; background: var(--dark); display: block; }
@@ -524,6 +545,7 @@ h1, h2, h3, h4, .btn {
 }
 .slider-arrow:hover { color: var(--dark); }
 .slider-arrow svg { width: 100%; height: 100%; }
+.slider-arrow--prev svg { transform: rotate(180deg); }
 
 /* ============ KEEP FIT ============ */
 .keepfit {
@@ -757,7 +779,7 @@ h1, h2, h3, h4, .btn {
   .nav__list { flex-direction: column; gap: 0; padding: 10px 20px; }
   .nav__list li { padding: 12px 0; border-bottom: 1px solid var(--grey-border); }
   .header__socials { display: none; }
-  .burger { display: flex; }
+  .burger { display: flex; margin-left: auto; }
   .hero__title { font-size: 52px; }
   .promo__grid, .sale-cards__grid, .blog__grid { grid-template-columns: 1fr; }
   .products--5, .products--3 { grid-template-columns: repeat(2, 1fr); }
