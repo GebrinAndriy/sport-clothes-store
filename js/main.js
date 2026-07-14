@@ -37,7 +37,15 @@ function initSlider(name, trackSelector) {
     const max = Math.max(0, slides - visible());
     if (index > max) index = max;
     if (index < 0) index = 0;
-    track.style.transform = `translateX(-${index * (100 / visible())}%)`;
+    // slide pitch = distance between neighbouring slides (accounts for margins)
+    const first = track.children[0].getBoundingClientRect();
+    const pitch = track.children[1]
+      ? track.children[1].getBoundingClientRect().left - first.left
+      : first.width;
+    // never scroll past the last slide; on the last position align the track flush with the right edge
+    const maxShift = Math.max(0, track.scrollWidth - track.clientWidth);
+    const shift = index >= max ? maxShift : Math.min(index * pitch, maxShift);
+    track.style.transform = `translateX(-${shift}px)`;
   };
 
   document.querySelectorAll(`[data-slider="${name}"]`).forEach(btn => {

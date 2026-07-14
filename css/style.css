@@ -41,7 +41,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .discount .container,
 .keepfit .container {
   max-width: 1760px;
-  padding: 0 40px;
+  padding: 0 80px;
   width: 100%; /* the banner sections are flex containers: without this the .container shrinks to fit and drifts to the center */
 }
 
@@ -154,11 +154,9 @@ h1, h2, h3, h4, .btn {
 .header__inner {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  gap: 55px;
+  justify-content: space-between;
+  gap: 40px;
 }
-
-.header__socials { margin-left: auto; }
 
 .logo__img { height: 46px; width: auto; }
 
@@ -584,7 +582,6 @@ h1, h2, h3, h4, .btn {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 12px;
   padding: 30px 40px;
 }
 
@@ -623,21 +620,9 @@ h1, h2, h3, h4, .btn {
 
 /* ============ NEWSLETTER ============ */
 .newsletter {
-  background: #F0F0F0;
-  position: relative;
-  overflow: hidden;
+  /* the strip image already contains the red runner photo with the angled cut */
+  background: #F0F0F0 url('../images/newsletter-runner.png') center / cover no-repeat;
   padding: 55px 0;
-}
-
-.newsletter__media {
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 34%;
-  background-size: cover;
-  background-position: center;
-  clip-path: polygon(0 0, 100% 0, 66% 100%, 0 100%);
 }
 
 .newsletter__inner {
@@ -786,7 +771,6 @@ h1, h2, h3, h4, .btn {
   .trending__title, .discount__title, .keepfit__title, .deal__title { font-size: 52px; }
   .slider__slide { flex: 0 0 50%; }
   .countdown { flex-wrap: wrap; }
-  .newsletter__media { display: none; }
   .newsletter__inner { justify-content: center; }
   .map-block { height: auto; }
   .map-block__map { height: 420px; }
